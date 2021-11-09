@@ -1,5 +1,100 @@
 [vscode插件-初学者](https://blog.csdn.net/weixin_42278979/category_9032760.html)
 
+## package.json 配置
+
+[vscode插件开发](https://www.cnblogs.com/liuxianan/p/vscode-plugin-overview.html)
+
+### 1、消息提示
+
+```
+vscode.window.showInformationMessage('普通消息');
+vscode.window.showWarningMessage('警告消息');
+vscode.window.showErrorMessage('错误消息');
+```
+
+#### 交互按钮
+
+```
+vscode.window.showErrorMessage(`与starling的远程交互依赖vscode-starling.sid配置项`, '打开配置项').then(selection => {
+  if (selection === '打开配置项') {
+    vscode.commands.executeCommand('workbench.action.openSettings');
+  }
+});
+```
+
+### package.json常用配置
+
+- name
+- displayName 插件的友好显示名称，用于显示在应用市场，支持中文
+- description 
+- keywords 关键词，用于应用市场搜索
+- version
+- publisher
+- engines 表示插件最低支持vscode版本
+- categories 插件应用市场分类
+- icon 插件图标
+- activationEvents 扩展的激活事件数组
+- main 插件的主入口
+- contributes 贡献点
+- scripts 同npm scripts
+- devDependencies 开发依赖
+
+### 2、activationEvents配置（插件什么时候被激活）
+
+- onLanguage:${language} 
+
+  每当打开解析为特定语言的文件时，插件被激活
+- onCommand:${command}
+
+   每当调用命令时，插件被激活
+- onDebug
+
+  调试
+- workspaceContains:${toplevelfilename}
+
+  每当打开文件夹并且该文件夹包含至少一个与 glob 模式匹配的文件时，插件被激活
+- onFileSystem:${scheme}
+
+  每当读取来自特定方案的文件或文件夹时，插件被激活
+- onView:${viewId}
+
+  每当在 VS Code 侧栏中展开指定 id 的视图（扩展或源代码控制是内置视图的示例）时，插件被激活
+- onUri
+
+  每当打开该扩展的系统范围的 Uri 时，插件被激活
+- onWebviewPanel 
+
+  当 VS Code 需要使用匹配的 viewType 恢复 webview 时，插件被激活。
+- onStartupFinished 
+
+  类似于 * 激活事件，但它不会减慢 VS Code 的启动速度。
+- onAuthenticationRequest 
+
+- onCustomEditor 
+
+- 符号 * 只要一启动vscode，插件被激活
+
+### 3、contributes
+
+- configuration：设置
+- commands：命令
+- menus：菜单
+- keybindings：快捷键绑定
+- languages：新语言支持
+- debuggers：调试
+- breakpoints：断点
+- grammars
+- themes：主题
+- snippets：代码片段
+- jsonValidation：自定义JSON校验
+- views：左侧侧边栏视图
+- viewsContainers：自定义activitybar
+- problemMatchers
+- problemPatterns
+- taskDefinitions
+- colors
+
+
 ## vscode插件 WebView
 
 ### extenstion.ts
