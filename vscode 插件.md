@@ -76,23 +76,78 @@ vscode.window.showErrorMessage(`与starling的远程交互依赖vscode-starling.
 
 ### 3、contributes
 
-- configuration：设置
+- configuration：插件配置项
+
+  1. type
+  2. title 配置项标题，会显示在vscode设置页
+  3. properties
+
 - commands：命令
+
+  1. command
+  2. title
+  3. category
+  4. icon :{
+    light,dark
+  }
+
 - menus：菜单
+
+
 - keybindings：快捷键绑定
+
+  1. command
+  2. key 
+  3. mac
+  4. when
+
 - languages：新语言支持
+
+  1. id
+  2. extensions
+  3. filenames
+  4. aliases
+  5. firstLine
+  6. configuration
+
 - debuggers：调试
 - breakpoints：断点
 - grammars
+
+  1. language
+  2. scopeName
+  3. path
+  4. embeddedLanguages
+  
 - themes：主题
+
+  1. label
+  2. uiTheme
+  3. path
 - snippets：代码片段
 - jsonValidation：自定义JSON校验
 - views：左侧侧边栏视图
+
+  1. explorer 活动栏中的资源管理器视图容器
+  2. scm 活动栏中的源代码控制器视图容器
+  3. debug 在活动栏这运行和调试视图容器
+  4. test 在活动栏中测试视图容器
+  5. 自定义视图容器
+
 - viewsContainers：自定义activitybar
-- problemMatchers
+
+  1. activitybar 活动栏
+  2. panel 面板
+- problemMatchers 匹配模式器
 - problemPatterns
 - taskDefinitions
 - colors
+
+  1. id
+  2. description
+  3. default:{
+    dark,light,highContrast
+  }
 
 
 ## vscode插件 WebView
