@@ -698,6 +698,7 @@ btn.attachEvent("onclick", function() {
 
 
     1）用户界面事件 
+    
          常用的几个：
          
         - load 
