@@ -631,3 +631,101 @@ dom.style.cssText="width:500px"
 console.log( dom.style.cssText) // width: 500px;
 </script>
 ```
+
+**事件**
+
+1. HTML事件
+
+2. DOM0事件,事件绑定，同一个dom多次绑定事件，执行最后一次绑定事件，前面的被覆盖掉了
+
+3. DOM2事件,事件监听，可以绑定多个，按顺序执行
+
+4. IE事件
+
+5. 跨浏览器事件
+
+```javascript
+
+// HTML事件
+<script>
+ function showMessage() {
+ console.log("Hello world!");
+ }
+</script>
+<input type="button" value="Click Me" onclick="showMessage()"/>
+   
+// DOM0事件 事件绑定
+let btn = document.getElementById("myBtn");
+btn.onclick = function() {
+ console.log("Clicked");
+};  
+btn.onclick = null; // 移除事件处理程序
+// 同一个dom多次绑定事件，执行最后一次绑定事件，前面的被覆盖掉了
+
+
+// DOM2事件 事件监听
+let btn = document.getElementById("myBtn");
+btn.addEventListener("click", () => {
+ console.log(this.id);
+}, false);  // true表示捕获 false表示冒泡（默认值）
+// 可以绑定多个，按顺序执行
+/* 
+    通过 addEventListener()添加的事件处理程序只能使用 removeEventListener()并传入与添
+    加时同样的参数来移除。这意味着使用 addEventListener()添加的匿名函数无法移除
+*/
+let btn = document.getElementById("myBtn");
+let handler = function() {
+ console.log(this.id);
+};
+btn.addEventListener("click", handler, false);
+btn.removeEventListener("click", handler, false); // 有效果！
+
+
+// IE事件
+/*
+    1. 第一个参数是onClick
+    2. this指向window
+    3. 给同一个按钮添加了两个不同的事件处理程序,会反向执行代码，先执行后面的
+    4. detachEvent可以移除事件处理程序，用法同事件监听一样
+*/
+var btn = document.getElementById("myBtn");
+btn.attachEvent("onclick", function() {
+ console.log("Clicked");
+});
+```
+
+6. 事件类型
+
+
+    1）用户界面事件 
+         常用的几个：
+         
+        - load 
+
+        - unload  页面完全卸载后触发
+
+        - error  window上当JavaScript报错时触发
+
+        - resize  窗口缩放时触发
+
+        - scroll  滚动条元素滚动时触发
+
+    2）HTML5事件
+
+          常用的几个：
+
+        - beforeunload 在页面即将从浏览器中卸载时触发
+
+        - DOMContentLoaded  在 DOM 树构建完成后立即触发,页面没有完全加载
+
+        - readystatechange  提供文档或元素加载状态的信息
+
+             uninitialized：对象存在并尚未初始化。 
+            
+             loading：对象正在加载数据。 
+            
+             loaded：对象已经加载完数据。
+            
+             interactive：对象可以交互，但尚未加载完成。 
+            
+             complete：对象加载完成。
