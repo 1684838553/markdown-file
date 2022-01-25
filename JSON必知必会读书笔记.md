@@ -44,9 +44,8 @@
     {
         "promo": "Say \"Bob's the best!\" at checkout for free 8oz bag of kibble."
     }
-
-    //解析器在读取第一个双引号之后，会把“Bob”前面的双引号当成字符串结尾的双引号。然后解析器发现后面还有许多不属于任何一个名称 - 值对的文字，就会报错。为了处理这个问题，我们需要在字符串中的双引号前面加上一个反斜线字符来对其转义
     ```
+    >  解析器在读取第一个双引号之后，会把“Bob”前面的双引号当成字符串结尾的双引号。然后解析器发现后面还有许多不属于任何一个名称 - 值对的文字，就会报错。为了处理这个问题，我们需要在字符串中的双引号前面加上一个反斜线字符来对其转义
 
     + 需要转义的字符
         + \/（正斜线）
@@ -58,13 +57,12 @@
         + \u 后面跟十六进制字符（如笑脸表情 \u263A）
 
     ```json
-    //对制表符和换行符转义后的 JSON
-
     {
-        "story": "\\t Once upon a time, in a far away land \\n there lived
-        a princess."
+        "story": "\\t Once upon a time, in a far away land \\n there lived a princess."
     }
     ```   
+    > 对制表符和换行符转义后的 JSON
+    
 
 + 数字 : 整数、小数、负数或者指数
 
